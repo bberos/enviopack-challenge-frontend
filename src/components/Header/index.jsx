@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { NavLink } from "react-router-dom";
+import { useCartProducts } from "../../context/CartProvider";
 import { Container, LeftContainer, RightContainer } from "./styles";
 export default function Header() {
+  const { cartProductId } = useCartProducts();
+
+  const countCartProduct = useMemo(() => {
+    return cartProductId?.length;
+  }, [cartProductId]);
+
   return (
     <Container>
       <LeftContainer>
@@ -18,7 +25,7 @@ export default function Header() {
           to="/cart"
           className={(navData) => (navData.isActive ? "link__active" : "link")}
         >
-          Carrito (1)
+          Carrito <>({countCartProduct})</>
         </NavLink>
         <div className="link">Credito $50000</div>
       </RightContainer>
