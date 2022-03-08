@@ -27,6 +27,7 @@ export const Container = styled.div`
     .price {
       font-size: 1.25rem;
       margin-right: 15px;
+      width: -webkit-fill-available;
     }
     button {
       margin-right: 10px;
