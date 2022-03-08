@@ -25,6 +25,9 @@ export const LeftContainer = styled.div`
       color: #fafafa;
       font-size: 1.1rem;
     }
+    &:hover {
+      opacity: 0.9;
+    }
   }
 `;
 export const RightContainer = styled.div`
@@ -37,12 +40,16 @@ export const RightContainer = styled.div`
     text-decoration: none;
     color: #fafafa;
     font-size: 1.1rem;
+    transition: all 0.2s;
     &__active {
       margin-right: 20px;
       text-decoration: none;
       font-weight: 600;
       color: #fafafa;
       font-size: 1.1rem;
+    }
+    &:hover {
+      opacity: 0.9;
     }
   }
 `;
