@@ -35,14 +35,12 @@ export default function CartScreen() {
   const cartIsEmpty = cartProductId.length > 0;
 
   const handlePurchase = () => {
-    let result = userData.credit - totalPrice;
+    const result = userData.credit - totalPrice;
     if (result >= 0) {
-      alert("Gracias por tu compra");
       setUserData({ ...userData, credit: result });
       removeAllCartProduct();
       navigateTo("/purchase", { state: { status: "success" } });
     } else {
-      alert("No tienes fondos suficiente");
       navigateTo("/purchase", { state: { status: "failure" } });
     }
   };
