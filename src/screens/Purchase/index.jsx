@@ -7,7 +7,6 @@ import { Button } from "../../styles/shared/Button";
 export default function PurchaseScreen() {
   const location = useLocation();
   const navigateTo = useNavigate();
-  console.log(location.state);
   return (
     <Container>
       <h1>Estado de la compra</h1>
