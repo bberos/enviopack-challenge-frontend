@@ -2,6 +2,7 @@ import React from "react";
 import { useCartProducts } from "../../../context/CartProvider";
 import { Button } from "../../../styles/shared/Button";
 import { Container } from "./styles";
+import ProductImage from "./../../../assets/image-product.jpg";
 
 export default function CartProduct({ product }) {
   const { id, title, price } = product;
@@ -12,11 +13,7 @@ export default function CartProduct({ product }) {
   return (
     <Container>
       <div className="leftContainer">
-        <img
-          src={"/src/assets/image-product.jpg"}
-          alt="product-image"
-          className="image"
-        />
+        <img src={ProductImage} alt="product-image" className="image" />
         <h1 className="title">{title}</h1>
       </div>
       <div className="rightContainer">
