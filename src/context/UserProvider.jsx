@@ -5,10 +5,7 @@ const UserContext = createContext();
 export const useUserData = () => useContext(UserContext);
 
 export default function UserProvider({ children }) {
-  const [userId, setUserId] = useState(() =>
-    JSON.parse(window.localStorage.getItem("@user_id") || "[]")
-  );
-  const [fakeData, setFakeData] = useState(user);
+  const fakeData = user;
   const [userData, setUserData] = useState();
 
   const fetchUser = () => {
