@@ -1,8 +1,9 @@
 import React from "react";
-import { Container } from "./styles";
-import { Button } from "./../../styles/shared/Button";
-import { useCartProducts } from "../../context/CartProvider";
 import { useNavigate } from "react-router-dom";
+
+import { Container } from "./styles";
+import { Button } from "./../../../styles/shared/Button";
+import { useCartProducts } from "../../../context/CartProvider";
 
 export default function ProductCard({ productData }) {
   const { id, title, price } = productData;

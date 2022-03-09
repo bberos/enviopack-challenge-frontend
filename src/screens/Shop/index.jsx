@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useMemo } from "react";
-import FilterProductName from "../../components/FilterProductName";
-import OrderProductByPrice from "../../components/OrderProductByPrice";
+
 import { Container } from "./styles";
+import FilterProductName from "../../components/Shop/FilterProductName";
+import OrderProductByPrice from "../../components/Shop/OrderProductByPrice";
+import ProductList from "../../components/Shop/ProductsList";
+import Paginate from "../../components/Shop/Paginate";
 import products from "./../../assets/json/products.json";
-import ProductList from "../../components/ProductsList";
-import Paginate from "../../components/Paginate";
 
 export default function ShopScreen() {
   const [productName, setProductName] = useState("");
