@@ -11,8 +11,7 @@ import { useUserData } from "../../context/UserProvider";
 
 export default function CartScreen() {
   const navigateTo = useNavigate();
-  const { cartProductId, removeCartProductId, removeAllCartProduct } =
-    useCartProducts();
+  const { cartProductId, removeAllCartProduct } = useCartProducts();
   const { userData, setUserData } = useUserData();
   const [cartProduct, setCartProduct] = useState();
   const allProducts = products.productos;
@@ -39,7 +38,6 @@ export default function CartScreen() {
     let result = userData.credit - totalPrice;
     if (result >= 0) {
       alert("Gracias por tu compra");
-      console.log(cartProductId);
       setUserData({ ...userData, credit: result });
       removeAllCartProduct();
       navigateTo("/purchase", { state: { status: "success" } });
@@ -58,7 +56,9 @@ export default function CartScreen() {
           <TotalCart total={totalPrice} />
         </>
       ) : (
-        <h1>No hay productos</h1>
+        <div className="cardOverlay">
+          <h2>No hay productos en el carrito</h2>
+        </div>
       )}
       <div className="buttonsContainer">
         <Button width="15%" onClick={() => navigateTo("/")}>
