@@ -13,7 +13,7 @@ export default function CartProduct({ product }) {
     <Container>
       <div className="leftContainer">
         <img
-          src="/src/assets/image-product.jpg"
+          src={"/src/assets/image-product.jpg"}
           alt="product-image"
           className="image"
         />

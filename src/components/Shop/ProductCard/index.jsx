@@ -23,7 +23,7 @@ export default function ProductCard({ productData }) {
   return (
     <Container>
       <img
-        src="/src/assets/image-product.jpg"
+        src={"/src/assets/image-product.jpg"}
         alt="product-image"
         className="image"
       />
