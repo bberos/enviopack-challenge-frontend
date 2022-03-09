@@ -20,7 +20,7 @@ export default function ShopScreen() {
   //definimos la cantidad de elementos que queremos devolver por pagina.
   const itemsPerPage = 6;
 
-  //este useEffect nos sirve para el paginado sin filtros y en el caso de que haya filtros tanto por precio como por name.
+  //paginado sin filtros y en el caso de que haya filtros tanto por precio como por name.
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     if (selectedValue === "default") {
@@ -33,7 +33,7 @@ export default function ShopScreen() {
   }, [itemOffset, itemsPerPage, productName, selectedValue]);
 
   //esta funcion filtra los resultados por el nombre si se ingresa mas de 2 caracteres, lo ideal si le estuviese pegando a una api seria hacer un debounce para no hacer una query por letra.
-  const filterByName = useMemo(() => {
+  useMemo(() => {
     let result = [...productsList];
     if (productName.length < 2) {
       setFilterProductList(result);
