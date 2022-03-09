@@ -7,10 +7,13 @@ import products from "./../../assets/json/products.json";
 import CartList from "./../../components/Cart/CartList";
 import TotalCart from "./../../components/Cart/TotalCart";
 import { useCartProducts } from "../../context/CartProvider";
+import { useUserData } from "../../context/UserProvider";
 
 export default function CartScreen() {
   const navigateTo = useNavigate();
-  const { cartProductId } = useCartProducts();
+  const { cartProductId, removeCartProductId, removeAllCartProduct } =
+    useCartProducts();
+  const { userData, setUserData } = useUserData();
   const [cartProduct, setCartProduct] = useState();
   const allProducts = products.productos;
 
@@ -32,6 +35,20 @@ export default function CartScreen() {
 
   const cartIsEmpty = cartProductId.length > 0;
 
+  const handlePurchase = () => {
+    let result = userData.credit - totalPrice;
+    if (result >= 0) {
+      alert("Gracias por tu compra");
+      console.log(cartProductId);
+      setUserData({ ...userData, credit: result });
+      removeAllCartProduct();
+      navigateTo("/purchase", { state: { status: "success" } });
+    } else {
+      alert("No tienes fondos suficiente");
+      navigateTo("/purchase", { state: { status: "failure" } });
+    }
+  };
+
   return (
     <Container>
       <h1>Carrito</h1>
@@ -47,11 +64,7 @@ export default function CartScreen() {
         <Button width="15%" onClick={() => navigateTo("/")}>
           Volver al catalogo
         </Button>
-        <Button
-          width="15%"
-          onClick={() => navigateTo("/purchase")}
-          disabled={!cartIsEmpty}
-        >
+        <Button width="15%" onClick={handlePurchase} disabled={!cartIsEmpty}>
           Finalizar compra
         </Button>
       </div>
