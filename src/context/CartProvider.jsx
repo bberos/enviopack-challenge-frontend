@@ -20,16 +20,26 @@ export default function CartProvider({ children }) {
   };
 
   const removeCartProductId = (prodId) => {
-    console.log(prodId);
     const newProduct = cartProductId.filter((item) => item !== prodId);
     const jsonValue = JSON.stringify(newProduct);
     window.localStorage.setItem("@carts_products", jsonValue);
     setCartProductId(newProduct);
   };
 
+  const removeAllCartProduct = () => {
+    const clear = [];
+    window.localStorage.setItem("@carts_products", clear);
+    setCartProductId(clear);
+  };
+
   return (
     <CartContext.Provider
-      value={{ cartProductId, storeCartProductId, removeCartProductId }}
+      value={{
+        cartProductId,
+        storeCartProductId,
+        removeCartProductId,
+        removeAllCartProduct,
+      }}
     >
       {children}
     </CartContext.Provider>
